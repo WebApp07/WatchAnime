@@ -44,3 +44,51 @@ async function getAnimes(query) {
     });
   }
 }
+
+const topTvAnime = document.querySelector("#topTvAnime");
+async function getTopAnime() {
+  const res = await fetch(`${api_url}/top/anime`);
+  const topAnimes = await res.json();
+  console.log(topAnimes.data);
+
+  topAnimes.data.map((topAnime) => {
+    topTvAnime.innerHTML += `
+        <div class="col-lg-3 col-md-6">
+            <div class="item">
+              <div class="thumb">
+                <a href="${topAnime.url}"
+                  ><img src="${topAnime.images.jpg.image_url}" alt=""
+                /></a>
+                <span class="price">${topAnime.score}</span>
+              </div>
+              <div class="down-content">
+                <span class="category">${topAnime.source}</span>
+                <h4>${topAnime.title}</h4>
+              </div>
+            </div>
+          </div>
+    `;
+  });
+}
+getTopAnime();
+
+/* 
+
+    <div class="col-lg-3 col-md-6">
+            <div class="item">
+              <div class="thumb">
+                <a href="product-details.html"
+                  ><img src="assets/images/trending-01.jpg" alt=""
+                /></a>
+                <span class="price"><em>$28</em>$20</span>
+              </div>
+              <div class="down-content">
+                <span class="category">Action</span>
+                <h4>Assasin Creed</h4>
+                <a href="product-details.html"
+                  ><i class="fa fa-shopping-bag"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+*/

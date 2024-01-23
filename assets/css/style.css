@@ -23,9 +23,18 @@
 }
 
 #displayImage {
-  display: block;
+  display: none;
   position: absolute;
-  left: 520px;
+  left: 480px;
   width: 200px;
   height: 200px;
+}
+
+#topTvAnime {
+  overflow-x: scroll;
+}
+
+#topTvAnime img {
+  height: 450px;
+  object-fit: cover;
 }
