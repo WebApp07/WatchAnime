@@ -49,8 +49,6 @@ const topTvAnime = document.querySelector("#topTvAnime");
 async function getTopAnime() {
   const res = await fetch(`${api_url}/top/anime`);
   const topAnimes = await res.json();
-  console.log(topAnimes.data);
-
   topAnimes.data.map((topAnime) => {
     topTvAnime.innerHTML += `
         <div class="col-lg-3 col-md-6">
@@ -72,23 +70,17 @@ async function getTopAnime() {
 }
 getTopAnime();
 
-/* 
+const randomCharacter = document.querySelector("#randomCharacter");
+async function getRandomCharacter() {
+  const response = await fetch(`${api_url}/random/characters`);
+  const RCD = await response.json();
+  console.log(RCD);
+  randomCharacter.innerHTML = `
+    <img src="${RCD.data.images.jpg.image_url}" alt="" />
+              <span class="price">${RCD.data.favorites}</span>
+              <span class="name">${RCD.data.name}</span>
+    
+    `;
+}
 
-    <div class="col-lg-3 col-md-6">
-            <div class="item">
-              <div class="thumb">
-                <a href="product-details.html"
-                  ><img src="assets/images/trending-01.jpg" alt=""
-                /></a>
-                <span class="price"><em>$28</em>$20</span>
-              </div>
-              <div class="down-content">
-                <span class="category">Action</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html"
-                  ><i class="fa fa-shopping-bag"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-*/
+getRandomCharacter();

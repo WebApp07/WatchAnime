@@ -38,3 +38,12 @@
   height: 450px;
   object-fit: cover;
 }
+
+#randomCharacter span.name {
+  background: #ee626b;
+  padding: 5px 10px;
+  border-radius: 25px;
+  top: -15px;
+  position: relative;
+  color: white;
+}
